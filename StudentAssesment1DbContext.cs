@@ -44,11 +44,11 @@ namespace StudentAssesment1
 
             modelBuilder.Entity<Song>().HasData(new Song[]
             {
-            new Song {Id = 1, Title = "Takeover", ArtistId = 1, Album = "Blueprint", Length = new DateTime(2023, 4, 20, 0, 3, 45)},
-            new Song {Id = 2, Title = "Lets Get It On", ArtistId = 2, Album = "Lets Get It On", Length = new DateTime(2023, 5, 2, 0, 4, 15)},
-            new Song {Id = 3, Title = "Atomic Dog", ArtistId = 3, Album = "Computer Games", Length = new DateTime(2023, 6, 30, 0, 5, 20)},
-            new Song {Id = 4, Title = "Buffalo Soldier", ArtistId = 4, Album = "Confrontation", Length = new DateTime(2023, 2, 20, 0, 3, 10)},
-            new Song {Id = 5, Title = "Bye Bye Blackbird", ArtistId = 5, Album = "Round About Midnight", Length = new DateTime(2023, 1, 28, 0, 2, 45)},
+            new Song {Id = 1, Title = "Takeover", ArtistsId = 1, Album = "Blueprint", Length = new DateTime(2023, 4, 20, 0, 3, 45)},
+            new Song {Id = 2, Title = "Lets Get It On", ArtistsId = 2, Album = "Lets Get It On", Length = new DateTime(2023, 5, 2, 0, 4, 15)},
+            new Song {Id = 3, Title = "Atomic Dog", ArtistsId = 3, Album = "Computer Games", Length = new DateTime(2023, 6, 30, 0, 5, 20)},
+            new Song {Id = 4, Title = "Buffalo Soldier", ArtistsId = 4, Album = "Confrontation", Length = new DateTime(2023, 2, 20, 0, 3, 10)},
+            new Song {Id = 5, Title = "Bye Bye Blackbird", ArtistsId = 5, Album = "Round About Midnight", Length = new DateTime(2023, 1, 28, 0, 2, 45)},
             });
 
 

@@ -6,8 +6,9 @@ namespace StudentAssesment1.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public int  ArtistId { get; set; }
-        public string Album { get; set;}
-        public DateTime Length { get; set;}
+        public int ArtistsId { get; set; }
+        public string Album { get; set; }
+        public DateTime Length { get; set; }
     }
 }
+
