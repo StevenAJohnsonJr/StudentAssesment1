@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using StudentAssesment1;
@@ -11,9 +12,10 @@ using StudentAssesment1;
 namespace StudentAssesment1.Migrations
 {
     [DbContext(typeof(StudentAssesmentDbContext))]
-    partial class StudentAssesmentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230909143021_DB5")]
+    partial class DB5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using StudentAssesment1;
@@ -11,9 +12,10 @@ using StudentAssesment1;
 namespace StudentAssesment1.Migrations
 {
     [DbContext(typeof(StudentAssesmentDbContext))]
-    partial class StudentAssesmentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230906231312_DB3")]
+    partial class DB3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +23,36 @@ namespace StudentAssesment1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("ArtistSong", b =>
+                {
+                    b.Property<int>("ArtistsId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SongsId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ArtistsId", "SongsId");
+
+                    b.HasIndex("SongsId");
+
+                    b.ToTable("ArtistSong");
+                });
+
+            modelBuilder.Entity("GenreSong", b =>
+                {
+                    b.Property<int>("GeneresId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SongsId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("GeneresId", "SongsId");
+
+                    b.HasIndex("SongsId");
+
+                    b.ToTable("GenreSong");
+                });
 
             modelBuilder.Entity("StudentAssesment1.Models.Artist", b =>
                 {
@@ -139,9 +171,6 @@ namespace StudentAssesment1.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("ArtistId")
-                        .HasColumnType("integer");
-
                     b.Property<int>("ArtistsId")
                         .HasColumnType("integer");
 
@@ -153,8 +182,6 @@ namespace StudentAssesment1.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ArtistId");
 
                     b.ToTable("Songs");
 
@@ -252,16 +279,34 @@ namespace StudentAssesment1.Migrations
                         });
                 });
 
-            modelBuilder.Entity("StudentAssesment1.Models.Song", b =>
+            modelBuilder.Entity("ArtistSong", b =>
                 {
                     b.HasOne("StudentAssesment1.Models.Artist", null)
-                        .WithMany("Songs")
-                        .HasForeignKey("ArtistId");
+                        .WithMany()
+                        .HasForeignKey("ArtistsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StudentAssesment1.Models.Song", null)
+                        .WithMany()
+                        .HasForeignKey("SongsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("StudentAssesment1.Models.Artist", b =>
+            modelBuilder.Entity("GenreSong", b =>
                 {
-                    b.Navigation("Songs");
+                    b.HasOne("StudentAssesment1.Models.Genre", null)
+                        .WithMany()
+                        .HasForeignKey("GeneresId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StudentAssesment1.Models.Song", null)
+                        .WithMany()
+                        .HasForeignKey("SongsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

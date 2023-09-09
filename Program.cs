@@ -35,44 +35,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/api/songs", (StudentAssesmentDbContext db) =>
-{
-    return db.Songs.ToList();
-});
-
-app.MapPost("api/songs", (StudentAssesmentDbContext db, Song songs) =>
-{
-    db.Songs.Add(songs);
-    db.SaveChanges();
-    return Results.Created($"/api/Songs/{songs.Id}", songs);
-});
-
-app.MapDelete("api/songs/{id}", (StudentAssesmentDbContext db, int id) =>
-{
-    Song song = db.Songs.SingleOrDefault(pr => pr.Id == id);
-    if (song == null)
-    {
-        return Results.NotFound();
-    }
-    db.Songs.Remove(song);
-    db.SaveChanges();
-    return Results.NoContent();
-});
-
-/*app.MapPut("/api//{id}", (CreekRiverDbContext db, int id, Campsite campsite) =>
-{
-    Campsite campsiteToUpdate = db.Campsites.SingleOrDefault(campsite => campsite.Id == id);
-    if (campsiteToUpdate == null)
-    {
-        return Results.NotFound();
-    }
-    campsiteToUpdate.Nickname = campsite.Nickname;
-    campsiteToUpdate.CampsiteTypeId = campsite.CampsiteTypeId;
-    campsiteToUpdate.ImageUrl = campsite.ImageUrl;
-
-    db.SaveChanges();
-    return Results.NoContent();
-});*/
 
 app.Run();
 
